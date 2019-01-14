@@ -1,5 +1,4 @@
-# import from Rasbpian Jessie
-FROM raspbian/jessie
+FROM debian
 
 # Install required packages with apt
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
@@ -13,7 +12,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 EXPOSE 25
 
 # Expose filesystem
-VOLUME /postfix /var/log /var/spool/postfix
+VOLUME /postfix /var/spool/postfix
 
 # Install entrypoint
 COPY ./docker-entrypoint.sh /
